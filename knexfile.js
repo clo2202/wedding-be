@@ -21,6 +21,9 @@ const customConfig = {
     connection: {
       database: "wedding_be"
     }
+  },
+  production: {
+    connection: `${DATABASE_URL}?ssl=true`
   }
 };
 

@@ -6,6 +6,7 @@
   "dependencies": {
     "apollo-server": "^2.9.7",
     "cors": "^2.8.5",
+    "express": "^4.17.1",
     "graphql": "^14.5.8",
     "knex": "^0.19.5",
     "pg": "^7.12.1"
@@ -18,6 +19,7 @@
   },
   "scripts": {
     "test": "mocha specs/app.spec.js",
+    "start": "node listen.js",
     "setup-db": "psql -f ./database/setup.sql",
     "migrate-make": "knex migrate:make",
     "migrate-latest": "knex migrate:latest",
