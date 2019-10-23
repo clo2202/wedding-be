@@ -1,0 +1,3 @@
+DROP DATABASE IF EXISTS wedding_be;
+
+CREATE DATABASE wedding_be;
