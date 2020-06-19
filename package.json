@@ -9,6 +9,7 @@
     "express": "^4.17.1",
     "graphql": "^14.5.8",
     "knex": "^0.19.5",
+    "nodemon": "^2.0.4",
     "pg": "^7.12.1"
   },
   "devDependencies": {
@@ -19,7 +20,7 @@
   },
   "scripts": {
     "test": "mocha specs/app.spec.js",
-    "start": "node listen.js",
+    "start": "nodemon listen.js",
     "setup-db": "psql -f ./database/setup.sql",
     "migrate-make": "knex migrate:make",
     "migrate-latest": "knex migrate:latest",
