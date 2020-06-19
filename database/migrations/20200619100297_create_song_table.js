@@ -1,8 +1,8 @@
 
 exports.up = function(knex) {
   return knex.schema.createTable("songs", songsTable => {
-      songsTable.increments("song_id").primary();
       songsTable.string("song_name");
+      songsTable.increments("guest_id").references("guests.guest_id");
   })
 };
 
