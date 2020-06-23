@@ -11,9 +11,12 @@ describe("/api", () => {
   describe("/rsvp", () => {
     it("POST responds with status: 201 and the new guest obj", () => {
       const input = {
-        name: "test name",
-        attendance: true,
-        meal: "vegan"
+        name: "Test Guest",
+        rsvp: true,
+        meal: "vegan",
+        song_suggestion: "Dancing in the Moonlight",
+        plus_one_name: "John Smith",
+        plus_one_meal: "vegetarian"
       };
       return request
         .post("/api/rsvp")
@@ -21,8 +24,19 @@ describe("/api", () => {
         .expect(201)
         .then(({ body: { rsvp } }) => {
           expect(rsvp).to.be.an("object");
-          expect(rsvp.name).to.equal("test name");
+          expect(rsvp.name).to.equal("Test Guest");
         });
     });
+    it("GET responds with status 200 and an array of all guest rsvps", () => {
+      return request
+        .get("/api/rsvp")
+        .expect(200)
+        .then(({ body: { rsvps } }) => {
+          expect(rsvps).to.be.an("array");
+        });
+    });
+    it("GET responds with status: 200 and an array filtered by attendance", () => {
+      return request.get("/api/rsvp?attendance=true").expect(200)
+    })
   });
 });

@@ -2,6 +2,9 @@ exports.guestsData = [
   {
     name: "Test Guest",
     rsvp: true,
-    meal_id: 2,
+    meal: "vegan",
+    song_suggestion: "Dancing in the Moonlight",
+    plus_one_name: "John Smith",
+    plus_one_meal: "vegetarian"
   }
 ];

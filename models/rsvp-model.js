@@ -1,7 +1,11 @@
 const { connection } = require("../connection");
 
-exports.addRsvp = rsvp => {
-  return connection("rsvp")
-    .insert(rsvp)
+exports.addRsvp = guest => {
+  return connection("guests")
+    .insert(guest)
     .returning("*");
 };
+
+exports.fetchRsvps = () => {
+  return connection("guests").returning("*");
+}
