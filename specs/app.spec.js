@@ -36,7 +36,21 @@ describe("/api", () => {
         });
     });
     it("GET responds with status: 200 and an array filtered by attendance", () => {
-      return request.get("/api/rsvp?attendance=true").expect(200)
-    })
+      return request.get("/api/rsvp?attendance=true").expect(200);
+    });
+  });
+  describe("/login", () => {
+    it("POST responds with auth true and jwt token if passwords match", () => {
+      const input = {
+        password: "JCwedding2606"
+      };
+      return request
+        .post("/api/login")
+        .send(input)
+        .expect(201)
+        .then(({ body: { auth } }) => {
+          expect(auth).to.equal(true);
+        });
+    });
   });
 });
