@@ -4,6 +4,7 @@ const request = require("supertest")(app);
 const chai = require("chai");
 const { expect } = chai;
 const { connection } = require("../connection");
+const { user_login } = require("../credentials");
 
 describe("/api", () => {
   beforeEach(() => connection.seed.run());
@@ -42,7 +43,7 @@ describe("/api", () => {
   describe("/login", () => {
     it("POST responds with auth true and jwt token if passwords match", () => {
       const input = {
-        password: "JCwedding2606"
+        password: user_login
       };
       return request
         .post("/api/login")
@@ -50,7 +51,20 @@ describe("/api", () => {
         .expect(201)
         .then(({ body: { auth, token } }) => {
           expect(auth).to.equal(true);
-          expect(token).to.be.a("string")
+          expect(token).to.be.a("string");
+        });
+    });
+    it("ERROR POST responds with unauthorised message if password is incorrect", () => {
+      const input = {
+        password: "wrongPassword"
+      };
+      return request
+        .post("/api/login")
+        .send(input)
+        .expect(401)
+        .then(({ body: { auth, token } }) => {
+          expect(auth).to.equal(false);
+          expect(token).to.equal(null);
         });
     });
   });

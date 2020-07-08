@@ -14,7 +14,5 @@ exports.postLogin = (req, res, next) => {
             res.status(401).send({auth: false, token: null})
         }
     });
-  }).next((err) => {
-      res.status(400).send(`${err}, there has been an error`)
   })
 };
