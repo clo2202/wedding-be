@@ -48,8 +48,9 @@ describe("/api", () => {
         .post("/api/login")
         .send(input)
         .expect(201)
-        .then(({ body: { auth } }) => {
+        .then(({ body: { auth, token } }) => {
           expect(auth).to.equal(true);
+          expect(token).to.be.a("string")
         });
     });
   });
