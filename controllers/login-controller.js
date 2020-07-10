@@ -7,7 +7,7 @@ exports.postLogin = (req, res, next) => {
     bycrpt.compare(req.body.password, login.password_hash).then(result => {
         if(result) {
             const  token = jwt.sign({ id: login.username }, process.env.JWT_SECRET, {
-                expiresIn: 86400
+                expiresIn: 7200
               });
             res.status(201).send({auth: true, token})
         } else {
