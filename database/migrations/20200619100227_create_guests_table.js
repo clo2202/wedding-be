@@ -4,10 +4,10 @@ exports.up = function(knex) {
       guestsTable.increments("guest_id").primary();
       guestsTable.string("name").notNullable();
       guestsTable.boolean("rsvp").notNullable();
-      guestsTable.string("meal");
+      guestsTable.string("dietary_req");
       guestsTable.string("song_suggestion");
       guestsTable.string("plus_one_name");
-      guestsTable.string("plus_one_meal");
+      guestsTable.string("plus_one_dietary_req");
   })
 };
 

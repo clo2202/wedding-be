@@ -14,10 +14,10 @@ describe("/api", () => {
       const input = {
         name: "Test Guest",
         rsvp: true,
-        meal: "vegan",
+        dietary_req: "no nuts",
         song_suggestion: "Dancing in the Moonlight",
         plus_one_name: "John Smith",
-        plus_one_meal: "vegetarian"
+        plus_one_dietary_req: "gluten free"
       };
       return request
         .post("/api/rsvp")
