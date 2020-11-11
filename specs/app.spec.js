@@ -68,4 +68,14 @@ describe("/api", () => {
         });
     });
   });
+  describe("/photos", () => {
+    it("GET responds with status 200 and an array of all photos", () => {
+      return request
+        .get("/api/photos")
+        .expect(200)
+        .then(({ body: { photos } }) => {
+          expect(photos[0]).to.contain.keys("photo_id", "photo_url");
+        });
+    });
+  });
 });
