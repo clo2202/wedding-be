@@ -25,7 +25,9 @@ const customConfig = {
   production: {
     connection: {
       connectionString: DB_URL,
-      ssl: true
+      ssl: {
+        rejectUnauthorized: false
+      }
     }
   }
 };
